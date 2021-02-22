@@ -2,7 +2,7 @@
   "name": "multi-integration-library",
   "version": "1.0.0",
   "description": "Node js module to create multi integration to run on kubernets, google cloud functions, aws lambda and express for local testing",
-  "main": "index.js",
+  "main": "src/runtime.js",
   "scripts": {
     "test": "jest --runInBand --coverage"
   },

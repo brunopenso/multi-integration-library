@@ -98,8 +98,7 @@ test('path /a empty no return', async function() {
         "exec": (params) => {}
     }], req, res)
 
-    expect(res.status).toHaveBeenCalledWith(500)
-    expect(res.send).toHaveBeenCalledWith({ message: 'integration error', error: 'Integration method do not returned' });
+    expect(res.status).toHaveBeenCalledWith(201)
 })
 
 test('path /a empty return', async function() {
