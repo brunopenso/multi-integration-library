@@ -170,10 +170,15 @@ function validatePattern (pattern) {
   }
 }
 function validateMethod (method) {
-
+  const methods = 'GET,POST,PUT,DELETE'
+  if (methods.indexOf(method) === -1 || (typeof method !== 'string')) {
+    throw new Error(`The only methods supported are ${methods}`)
+  }
 }
 function validateExec (exec) {
-
+  if (!({}.toString.call(exec) === '[object Function]')) {
+    throw new Error('Exec should be a function')
+  }
 }
 
 module.exports = {

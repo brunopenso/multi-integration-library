@@ -81,3 +81,54 @@ test('validate object attribute pattern definition', function () {
     expect(err.message).toBe('Pattern should be a string in the pattern /path/path2/:param')
   }
 })
+
+test('validate object attribute method definition', function () {
+  try {
+    validateRoute([{ pattern: '/path', method: 2, exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+
+  try {
+    validateRoute([{ pattern: '/path', method: 'x', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+
+  try {
+    validateRoute([{ pattern: '/path', method: 'get', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+
+  try {
+    validateRoute([{ pattern: '/path', method: 'post', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+
+  try {
+    validateRoute([{ pattern: '/path', method: 'put', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+
+  try {
+    validateRoute([{ pattern: '/path', method: 'delete', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('The only methods supported are GET,POST,PUT,DELETE')
+  }
+})
+
+test('validate object attribute exec definition', function () {
+  try {
+    validateRoute([{ pattern: '/path', method: 'GET', exec: 3 }])
+  } catch (err) {
+    expect(err.message).toBe('Exec should be a function')
+  }
+})
+
+test('success', function () {
+  const response = validateRoute([{ pattern: '/path', method: 'GET', exec: () => {} }])
+  expect(response).toBe(true)
+})
