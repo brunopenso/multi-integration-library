@@ -15,9 +15,8 @@ async function routeTo (routes, request, response) {
   const requestParams = util.parseHttpRequest(request)
   requestParams.pathParamsAttr = {}
   let routeToExecute
-  for (let i = 0; i < routes.length; i++) {
-    const route = routes[i]
 
+  for (const route of routes) {
     if (route.method !== requestParams.method) {
       continue
     }
@@ -134,7 +133,7 @@ function validateMethod (method) {
   }
 }
 function validateExec (exec) {
-  if (!({}.toString.call(exec) === '[object Function]')) {
+  if (({}.toString.call(exec) !== '[object Function]')) {
     throw new Error('Exec should be a function')
   }
 }
