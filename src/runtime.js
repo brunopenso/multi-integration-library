@@ -1,6 +1,6 @@
 const util = require('./util')
 
-async function execute (routes, request, response) {
+async function runtime (routes, request, response) {
   try {
     if (!routes || routes.length === 0) {
       throw new Error('Routes object is empty')
@@ -140,7 +140,7 @@ function validateExec (exec) {
 }
 
 module.exports = {
-  runtime: execute,
+  runtime,
   createResponse,
   validateRoute
 }
