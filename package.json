@@ -23,7 +23,8 @@
     "coveralls": "^3.1.0",
     "jest": "^26.1.0",
     "node-mocks-http": "^1.10.1",
-    "standard": "^16.0.3"
+    "standard": "^16.0.3",
+    "husky": "^4.3.8"
   },
   "dependencies": {},
   "jest": {
@@ -44,5 +45,10 @@
       "expect",
       "jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test"
+    }
   }
 }
