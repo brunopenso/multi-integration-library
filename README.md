@@ -1,5 +1,10 @@
 # multi-integration
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=alert_status)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=bugs)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=code_smells)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=coverage)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
+
 Node js module to create multi integration to run on kubernets, google cloud functions, aws lambda and express for local testing
 
 This lib basic enable the creation of routes that will be interpreted on the entry point of each technology.
