@@ -91,7 +91,7 @@ test('GET /todo?search=abc', async function () {
   const mockReq = httpMocks.createRequest({
     method: 'GET',
     url: path,
-    queryString: {
+    query: {
       search: 'abc'
     }
   })
@@ -100,6 +100,5 @@ test('GET /todo?search=abc', async function () {
 
   expect(myMock.mock.calls.length).toBe(1)
   expect(myMock.mock.calls[0][0].path).toBe(path)
-  // TODO Not working yet
-  // expect(myMock.mock.calls[0][0].queryString).toBe('abc')
+  expect(myMock.mock.calls[0][0].queryString.search).toBe('abc')
 })

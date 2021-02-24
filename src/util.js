@@ -18,6 +18,11 @@ function parsePath (url) {
   return params
 }
 
+/*
+ * Express|Kubernetes with Express: method;orginalUrl;query;headers;body
+ * Lambda: TBD
+ * Google Cloud Functions: TBD
+ */
 function parseHttpRequest (request) {
   if (!request) {
     throw Error('invalid request object')
