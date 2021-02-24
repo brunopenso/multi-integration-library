@@ -15,7 +15,8 @@ async function routeTo (routes, request, response) {
   let routeToExecute
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i]
-    if (route.method !== requestParams.method) {
+    //TODO Check if this is really necessary
+    if (route.method.toLowerCase() !== requestParams.method.toLowerCase()) {
       continue
     }
 

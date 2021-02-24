@@ -5,6 +5,8 @@
   "main": "src/runtime.js",
   "scripts": {
     "test": "standard && jest --runInBand --coverage",
+    "test:custom": "standard && jest --runInBand --coverage /tests/success.test.js",
+    "test:debug": "jest /tests/success.test.js",
     "standard:fix": "standard --fix"
   },
   "repository": {
@@ -18,12 +20,12 @@
   },
   "homepage": "https://github.com/brunopenso/multi-integration-library#readme",
   "devDependencies": {
-    "jest": "^26.1.0",
     "coveralls": "^3.1.0",
+    "jest": "^26.1.0",
+    "node-mocks-http": "^1.10.1",
     "standard": "^16.0.3"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "jest": {
     "collectCoverageFrom": [
       "src/**"
