@@ -64,6 +64,7 @@ test('path with /a get no route data', async function () {
   await runtime([{}], req, res)
 
   expect(res.status).toHaveBeenCalledWith(400)
+  console.log(res.send)
   expect(res.send).toHaveBeenCalledWith({ message: 'invalid path' })
 })
 
