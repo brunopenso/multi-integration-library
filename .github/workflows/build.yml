@@ -38,7 +38,10 @@ jobs:
             args: >
                 -Dsonar.organization=brunopenso
                 -Dsonar.projectKey=69338b20-fd5f-439d-bf2c-2b1473ca5712
-                -Dsonar.python.coverage.reportPaths=coverage.xml
                 -Dsonar.sources=src
                 -Dsonar.coverage.exclusions=**tests**
-                -Dsonar.language=py
+                -Dsonar.exclusions=**tests**
+                -Dsonar.sourceEncoding=UTF-8
+                -Dsonar.language=js
+                -Dsonar.profile=node
+                -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
