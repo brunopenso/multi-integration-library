@@ -28,7 +28,7 @@ function parseHttpRequest (request) {
   const url = parseUrl(request.url)
   return {
     path: url,
-    method: request.method.toLowerCase(),
+    method: request.method,
     queryString: request.query,
     body: request.body,
     headers: request.headers

@@ -59,7 +59,7 @@ test('path with /a no method', async function () {
 })
 
 test('path with /a get no route data', async function () {
-  const req = mockRequest('/a', 'get', undefined)
+  const req = mockRequest('/a', 'GET', undefined)
   const res = mockResponse()
   await runtime([{}], req, res)
 
@@ -69,7 +69,7 @@ test('path with /a get no route data', async function () {
 })
 
 test('empty routes', async function () {
-  const req = mockRequest('/a', 'get', undefined)
+  const req = mockRequest('/a', 'GET', undefined)
   const res = mockResponse()
   await runtime([], req, res)
 
@@ -82,7 +82,7 @@ test('path with /a get with route data wrong method', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => {}
   }], req, res)
 
@@ -95,7 +95,7 @@ test('path /a empty no return', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => {}
   }], req, res)
 
@@ -107,7 +107,7 @@ test('path /a empty return', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return {} }
   }], req, res)
 
@@ -120,7 +120,7 @@ test('path /a return data', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse(undefined, undefined, undefined) }
   }], req, res)
 
@@ -133,7 +133,7 @@ test('path /a return status code', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({}, undefined, 200) }
   }], req, res)
 
@@ -146,7 +146,7 @@ test('path /a return status code', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({}, undefined, 200) }
   }], req, res)
 
@@ -159,12 +159,12 @@ test('2 routes', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a' }, undefined, 200) }
   },
   {
     pattern: '/a/b',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a/b' }, undefined, 200) }
   }], req, res)
 
@@ -177,17 +177,17 @@ test('3 routes with path param', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a' }, undefined, 200) }
   },
   {
     pattern: '/a/:id/b',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ id: params.pathParamsAttr.id }, undefined, 200) }
   },
   {
     pattern: '/a/b',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a/b' }, undefined, 200) }
   }], req, res)
 
@@ -200,22 +200,22 @@ test('multi path params', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a' }, undefined, 200) }
   },
   {
     pattern: '/a/:id/b',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ id: params.pathParamsAttr.id }, undefined, 200) }
   },
   {
     pattern: '/a/b',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ route: 'a/b' }, undefined, 200) }
   },
   {
     pattern: '/car/:id/engine/:engineCode/type',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ id: params.pathParamsAttr.id, engine: params.pathParamsAttr.engineCode }, undefined, 200) }
   }], req, res)
 
@@ -228,7 +228,7 @@ test('path with query param', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ test: params.queryString.test }, undefined, 200) }
   }], req, res)
 
@@ -241,7 +241,7 @@ test('path with query param with last slash', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ test: params.queryString.test }, undefined, 200) }
   }], req, res)
 
@@ -254,7 +254,7 @@ test('path with query param with last slash with headers', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { return createResponse({ test: params.queryString.test }, { t: 1, x: 2 }, 200) }
   }], req, res)
 
@@ -269,7 +269,7 @@ test('method not implemented', async function () {
   const res = mockResponse()
   await runtime([{
     pattern: '/a',
-    method: 'get',
+    method: 'GET',
     exec: (params) => { throw new Error('not implemented') }
   }], req, res)
 
