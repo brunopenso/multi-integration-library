@@ -20,10 +20,14 @@ function parsePath (url) {
 
 /*
  * Express|Kubernetes with Express: method;orginalUrl;query;headers;body
- * Lambda: TBD
+ * AWS Lambda: TBD
  * Google Cloud Functions: TBD
  */
-function parseHttpRequest (request) {
+function parseHttpRequest (provider, request) {
+  const providers = 'express;awslambda;gcpfunction'
+  if (providers.indexOf(provider) === -1) {
+    throw new Error(`Only the follow providers are available ${providers}`)
+  }
   if (!request) {
     throw Error('invalid request object')
   }

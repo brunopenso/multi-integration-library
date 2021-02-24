@@ -1,18 +1,18 @@
 const util = require('./util')
 
-async function runtime (routes, request, response) {
+async function runtime (routes, request, response, provider = 'express') {
   try {
     if (!routes || routes.length === 0) {
       throw new Error('Routes object is empty')
     }
-    await routeTo(routes, request, response)
+    await routeTo(routes, request, response, provider)
   } catch (err) {
     response.status(500).send({ message: 'integration error', error: err.message })
   }
 }
 
-async function routeTo (routes, request, response) {
-  const requestParams = util.parseHttpRequest(request)
+async function routeTo (routes, request, response, provider) {
+  const requestParams = util.parseHttpRequest(provider, request)
   requestParams.pathParamsAttr = {}
   let routeToExecute
 
