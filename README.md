@@ -5,7 +5,7 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=code_smells)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=coverage)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
 
-Node js module to create multi integration to run on kubernets, google cloud functions, aws lambda and express for local testing
+Node js module to create multi integration code that will run on kubernets, google cloud functions or aws lambda. For local environment it works with express too.
 
 This lib basic enable the creation of routes that will be interpreted on the entry point of each technology.
 
@@ -16,7 +16,7 @@ const routes = [
     {
         "pattern": "/path",
         "method": "get",
-        "exec": (params) => fPath()
+        "exec": (params) => fPath(params)
     },
     {
         "pattern": "/queryParam",
@@ -31,14 +31,14 @@ const routes = [
     {
         "pattern": "/a/b/c/d/ee/ff/zz",
         "method": "get",
-        "exec": (params) => fCompletePath()
+        "exec": (params) => fCompletePathparams)
     }
 ]
 ```
 
-When you define the routes the paths will be interpreted in the order of declaration and it will execute the function associated to the exec property.
+When you define the routes, the paths will be interpreted in the order of declaration and it will execute the function associated to the exec property.
 
-Have a look to the [multi-integration-test](https://github.com/brunopenso/multi-integration-test) on how to implement a multi technology integration that will enable you to port your code from kubernets to aws lambda or google cloud functions
+Have a look to the [multi-integration-test](https://github.com/brunopenso/multi-integration-library-test) on how to implement a multi technology integration that will enable you to port your code from kubernets to aws lambda or google cloud functions
 
 ## Local testing
 

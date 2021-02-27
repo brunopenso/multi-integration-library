@@ -1,0 +1,34 @@
+on:
+  release:
+    types: [released]
+name: CD
+jobs:
+    delivery:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+          with:
+            # Disabling shallow clone is recommended for improving relevancy of reporting
+            fetch-depth: 0
+
+        - uses: actions/setup-node@v2
+          with:
+            node-version: '12'
+
+        - run: npm install
+          name: "Install dependencies"
+
+        - run: npm test
+          name: "Test"
+
+        - id: "publish"
+          uses: JS-DevTools/npm-publish@v1
+          with:
+            token: ${{ secrets.NPM_AUTH_TOKEN }}
+
+        - if: steps.publish.type != 'none'
+          run: |
+            echo "Version changed: ${{ steps.publish.old-version }} => ${{ steps.publish.version }}"
+        - if: steps.publish.type == 'none'
+          run: |
+            echo "Version not changed."
