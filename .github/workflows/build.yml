@@ -10,6 +10,7 @@ on:
       - .github/dependabot.yml
       - .gitattributes
       - .github/delivery.yml
+  workflow_despatch:
 name: CI
 jobs:
     build:
