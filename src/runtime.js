@@ -1,5 +1,12 @@
 const util = require('./util')
 
+/*
+ * Entry point for this library
+ * @param {Array} routes - The list of routes
+ * @param {HttpRequest} request
+ * @param {HttpResponse} response
+ * @param {String} provider - The type of tecnology running this code. Default: express
+ */
 async function runtime (routes, request, response, provider = 'express') {
   try {
     if (!routes || routes.length === 0) {
@@ -10,7 +17,9 @@ async function runtime (routes, request, response, provider = 'express') {
     response.status(500).send({ message: 'integration error', error: err.message })
   }
 }
-
+/*
+ * Parse the url and call the method in the routes
+ */
 async function routeTo (routes, request, response, provider) {
   const requestParams = util.parseHttpRequest(provider, request)
   requestParams.pathParamsAttr = {}
@@ -71,7 +80,9 @@ async function routeTo (routes, request, response, provider) {
     response.status(400).send({ message: 'invalid path' })
   }
 }
-
+/*
+ * Create a response message
+ */
 function createResponse (body, headers, errorCode) {
   return {
     statusCode: errorCode,
@@ -80,6 +91,9 @@ function createResponse (body, headers, errorCode) {
   }
 }
 
+/*
+ * Validate the routes arrays if it is compliance to the library
+ */
 function validateRoute (routes) {
   if (!Array.isArray(routes)) {
     throw new Error('Route is not an array, please check the documentation')
@@ -112,6 +126,9 @@ function validateRoute (routes) {
   return true
 }
 
+/*
+ * Validate route pattern
+ */
 function validatePattern (pattern) {
   const defaultMessage = 'Pattern should be a string in the pattern /path/path2/:param'
   if (typeof pattern === 'string') {
@@ -126,12 +143,20 @@ function validatePattern (pattern) {
     throw new Error(defaultMessage)
   }
 }
+
+/*
+ * Validate http method
+ */
 function validateMethod (method) {
   const methods = 'GET,POST,PUT,DELETE'
   if (methods.indexOf(method) === -1 || (typeof method !== 'string')) {
     throw new Error(`The only methods supported are ${methods}`)
   }
 }
+
+/*
+ * Validate function of exec parameter
+ */
 function validateExec (exec) {
   if (({}.toString.call(exec) !== '[object Function]')) {
     throw new Error('Exec should be a function')

@@ -1,4 +1,6 @@
-
+/*
+ * Parse request url after the domain and before de ?
+ */
 function parseUrl (requestUrl) {
   let url = requestUrl.replace(/\/\//g, '/')
   // get the value from the url before ?
@@ -11,6 +13,9 @@ function parseUrl (requestUrl) {
 
   return url
 }
+/*
+ * Parse the path in an array
+ */
 function parsePath (url) {
   // separate all paths in  array
   let params = url.split('/')
@@ -44,6 +49,9 @@ function parseHttpRequest (provider, request) {
   }
 }
 
+/*
+ * Interate over a list of headers and add all of than to the Http Response
+ */
 function setHttpResponseHeaders (response, headers) {
   if (headers) {
     const keys = Object.keys(headers)
