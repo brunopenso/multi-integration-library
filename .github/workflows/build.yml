@@ -9,6 +9,7 @@ on:
       - .vscode/*
       - .github/dependabot.yml
       - .gitattributes
+      - .github/delivery.yml
 name: CI
 jobs:
     build:
