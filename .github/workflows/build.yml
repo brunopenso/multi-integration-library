@@ -9,7 +9,7 @@ on:
       - .vscode/*
       - .github/dependabot.yml
       - .gitattributes
-      - .github/delivery.yml
+      - .github/workflows/delivery.yml
   workflow_dispatch:
 name: CI
 jobs:
