@@ -36,6 +36,18 @@ const routes = [
 ]
 ```
 
+The `params` parameter have this properties:
+```json
+  {
+    path: 'url',
+    method: 'http method',
+    queryString: 'object with all query string values',
+    body: 'body json message',
+    headers: 'object with all headers',
+    pathParamsAttr: 'object with all path params according to the route defined'
+  }
+```
+
 When you define the routes, the paths will be interpreted in the order of declaration and it will execute the function associated to the exec property.
 
 Have a look to the [multi-integration-test](https://github.com/brunopenso/multi-integration-library-test) on how to implement a multi technology integration that will enable you to port your code from kubernets to aws lambda or google cloud functions

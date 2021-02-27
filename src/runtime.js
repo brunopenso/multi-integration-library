@@ -57,25 +57,26 @@ async function routeTo (routes, request, response, provider) {
     }
   }
   if (routeToExecute) {
-    let data
+    let responseData
     try {
-      data = await routeToExecute.exec(requestParams)
+      responseData = await routeToExecute.exec(requestParams)
     } catch (err) {
       throw new Error(`Error not handled in implementation. Message: ${err.message}`)
     }
-    if (!data) {
+    if (!responseData) {
       console.log('Integration method returned with no data')
       response.status(201).send()
+      return
     }
-    if (!data.body) {
-      data.body = ''
+    if (!responseData.body) {
+      responseData.body = ''
     }
 
-    util.setHttpResponseHeaders(response, data.headers)
-    if (!data.statusCode) {
+    util.setHttpResponseHeaders(response, responseData.headers)
+    if (!responseData.statusCode) {
       throw new Error('Status code or body is invalid')
     }
-    response.status(data.statusCode).send(data.body)
+    response.status(responseData.statusCode).send(responseData.body)
   } else {
     response.status(400).send({ message: 'invalid path' })
   }
