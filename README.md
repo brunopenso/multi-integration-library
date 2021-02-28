@@ -48,6 +48,10 @@ The `params` parameter have this properties:
   }
 ```
 
+All `exec` functions should be async.
+
+## Behaviour
+
 When you define the routes, the paths will be interpreted in the order of declaration and it will execute the function associated to the exec property.
 
 Have a look to the [multi-integration-test](https://github.com/brunopenso/multi-integration-library-test) on how to implement a multi technology integration that will enable you to port your code from kubernets to aws lambda or google cloud functions
