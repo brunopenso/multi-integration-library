@@ -28,9 +28,9 @@ function parsePath (url) {
  * AWS Lambda: TBD
  * Google Cloud Functions: TBD
  */
-function parseHttpRequest (provider, request) {
+function parseHttpRequest (runtime, request) {
   const providers = 'express;awslambda;gcpfunction'
-  if (providers.indexOf(provider) === -1) {
+  if (providers.indexOf(runtime) === -1) {
     throw new Error(`Only the follow providers are available ${providers}`)
   }
   if (!request) {

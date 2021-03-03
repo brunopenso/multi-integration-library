@@ -7,12 +7,12 @@ const util = require('./util')
  * @param {HttpResponse} response
  * @param {String} provider - The type of tecnology running this code. Default: express
  */
-async function runtime (routes, request, response, provider = 'express') {
+async function runtime (routes, request, response, runtime = 'express') {
   try {
     if (!routes || routes.length === 0) {
       throw new Error('Routes object is empty')
     }
-    await routeTo(routes, request, response, provider)
+    await routeTo(routes, request, response, runtime)
   } catch (err) {
     response.status(500).send({ message: 'integration error', error: err.message })
   }
@@ -20,8 +20,8 @@ async function runtime (routes, request, response, provider = 'express') {
 /*
  * Parse the url and call the method in the routes
  */
-async function routeTo (routes, request, response, provider) {
-  const requestParams = util.parseHttpRequest(provider, request)
+async function routeTo (routes, request, response, runtime) {
+  const requestParams = util.parseHttpRequest(runtime, request)
   requestParams.pathParamsAttr = {}
   let routeToExecute
 
