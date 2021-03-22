@@ -39,12 +39,12 @@ const routes = [
 The `params` parameter have this properties:
 ```json
   {
-    path: 'url',
-    method: 'http method',
-    queryString: 'object with all query string values',
-    body: 'body json message',
-    headers: 'object with all headers',
-    pathParamsAttr: 'object with all path params according to the route defined'
+    "path": "url",
+    "method": "http method",
+    "queryString": "object with all query string values",
+    "body": "body json message",
+    "headers": "object with all headers",
+    "pathParamsAttr": "object with all path params according to the route defined"
   }
 ```
 
