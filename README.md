@@ -73,3 +73,9 @@ In the `multi-integration-library-test`:
 cd multi-integration-library-test
 npm link multi-integration-library
 ```
+
+## History
+
+I decided to create this lib to make my tests, POCs and POAs easier to run.
+
+In March 2021, I came across to this [text](https://www.infoq.com/articles/serverless-microservices-flexibility/) from infoq that is related to my idea
