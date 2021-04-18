@@ -79,3 +79,9 @@ npm link multi-integration-library
 I decided to create this lib to make my tests, POCs and POAs easier to run.
 
 In March 2021, I came across to this [text](https://www.infoq.com/articles/serverless-microservices-flexibility/) from infoq that is related to my idea
+
+## How to publish new version to NPM
+1. Change package.json version
+2. Commit and wait the CI to finish
+3. Create a release on github interface
+4. Wait for the CD to finish
