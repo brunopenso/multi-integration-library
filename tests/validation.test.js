@@ -1,59 +1,57 @@
 const { validateRoute } = require('../src/runtime')
 
-test('not an array', function () {
-  try {
-    validateRoute({})
-  } catch (err) {
-    expect(err.message).toBe('Route is not an array, please check the documentation')
-  }
-  try {
-    validateRoute(undefined)
-  } catch (err) {
-    expect(err.message).toBe('Route is not an array, please check the documentation')
-  }
-  try {
-    validateRoute(null)
-  } catch (err) {
-    expect(err.message).toBe('Route is not an array, please check the documentation')
-  }
+afterEach(jest.restoreAllMocks)
+
+describe('not an array', () => {
+  const errorMessage = 'Route is not an array, please check the documentation'
+  test('simple object', async () => {
+    await expect(async () => {
+      validateRoute({})
+    }).rejects.toThrow(errorMessage)
+  })
+  test('object = undefined', async () => {
+    await expect(async () => {
+      validateRoute(undefined)
+    }).rejects.toThrow(errorMessage)
+  })
+  test('object = null', async () => {
+    await expect(async () => {
+      validateRoute(null)
+    }).rejects.toThrow(errorMessage)
+  })
 })
 
-test('invalid array', function () {
-  try {
-    validateRoute([])
-  } catch (err) {
-    expect(err.message).toBe('Route array is empty')
-  }
-
-  try {
-    validateRoute([{}, {}])
-  } catch (err) {
-    expect(err.message).toBe('Route object in array is empty')
-  }
-
-  try {
-    validateRoute([{ a: 1 }, { b: 2 }])
-  } catch (err) {
-    expect(err.message).toBe('Object doesn\'t contain the required attributes')
-  }
-
-  try {
-    validateRoute([{ a: 1, b: 2, c: 3 }])
-  } catch (err) {
-    expect(err.message).toBe('Pattern attribute is required')
-  }
-
-  try {
-    validateRoute([{ pattern: 1, b: 2, c: 3 }])
-  } catch (err) {
-    expect(err.message).toBe('Method attribute is required')
-  }
-
-  try {
-    validateRoute([{ pattern: 1, method: 2, c: 3 }])
-  } catch (err) {
-    expect(err.message).toBe('Exec attribute is required')
-  }
+describe('invalid array', () => {
+  test('array is empty', async () => {
+    await expect(async () => {
+      validateRoute([])
+    }).rejects.toThrow('Route array is empty')
+  })
+  test('route object is empty', async () => {
+    await expect(async () => {
+      validateRoute([{}, {}])
+    }).rejects.toThrow('Route object in array is empty')
+  })
+  test('object with no attributes', async () => {
+    await expect(async () => {
+      validateRoute([{ a: 1 }, { b: 2 }])
+    }).rejects.toThrow('Object doesn\'t contain the required attributes')
+  })
+  test('patter attribute missing', async () => {
+    await expect(async () => {
+      validateRoute([{ a: 1, b: 2, c: 3 }])
+    }).rejects.toThrow('Pattern attribute is required')
+  })
+  test('method attribute missing', async () => {
+    await expect(async () => {
+      validateRoute([{ pattern: 1, b: 2, c: 3 }])
+    }).rejects.toThrow('Method attribute is required')
+  })
+  test('exec attribute missing', async () => {
+    await expect(async () => {
+      validateRoute([{ pattern: 1, method: 2, c: 3 }])
+    }).rejects.toThrow('Exec attribute is required')
+  })
 })
 
 test('validate object attribute pattern definition', function () {
