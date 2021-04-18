@@ -7,12 +7,12 @@ const util = require('./util')
  * @param {HttpResponse} response
  * @param {String} provider - The type of tecnology running this code. Default: express
  */
-async function runtime (routes, request, response, runtime = 'express') {
+async function runtime (routes, request, response, provider = 'express') {
   try {
     if (!routes || routes.length === 0) {
       throw new Error('Routes object is empty')
     }
-    await routeTo(routes, request, response, runtime)
+    await routeTo(routes, request, response, provider)
   } catch (err) {
     response.status(500).send({ message: 'integration error', error: err.message })
   }
@@ -42,7 +42,8 @@ async function routeTo (routes, request, response, runtime) {
           if (patternPath[j] === requestPath[j]) {
             match++
             continue
-          } else if (patternPath[j].indexOf(':') !== -1) {
+          }
+          if (patternPath[j].indexOf(':') !== -1) {
             match++
             requestParams.pathParamsAttr[patternPath[j].substring(1)] = requestPath[j]
           } else {
