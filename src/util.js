@@ -55,8 +55,8 @@ function parseHttpRequest (runtime, request) {
 function setHttpResponseHeaders (response, headers) {
   if (headers) {
     const keys = Object.keys(headers)
-    for (let i = 0; i < keys.length; i++) {
-      response.set(keys[i], headers[keys[i]])
+    for (const key of keys) {
+      response.set(key, headers[key])
     }
   }
 }

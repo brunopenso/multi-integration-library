@@ -20,8 +20,8 @@ async function runtime (routes, request, response, provider = 'express') {
 /*
  * Parse the url and call the method in the routes
  */
-async function routeTo (routes, request, response, runtime) {
-  const requestParams = util.parseHttpRequest(runtime, request)
+async function routeTo (routes, request, response, provideer) {
+  const requestParams = util.parseHttpRequest(provideer, request)
   requestParams.pathParamsAttr = {}
   let routeToExecute
 
