@@ -1,6 +1,8 @@
 const { runtime, validateRoute, createResponse } = require('../src/runtime')
 const httpMocks = require('node-mocks-http')
 
+afterEach(jest.restoreAllMocks)
+
 const myMock = jest.fn()
 myMock.mockResolvedValue(createResponse(200, {}, {}))
 

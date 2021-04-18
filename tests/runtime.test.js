@@ -1,5 +1,7 @@
 const { runtime, createResponse } = require('../src/runtime')
 
+afterEach(jest.restoreAllMocks)
+
 const mockRequest = (url, method, body) => ({
   url,
   method,
