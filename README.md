@@ -5,7 +5,16 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=code_smells)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=69338b20-fd5f-439d-bf2c-2b1473ca5712&metric=coverage)](https://sonarcloud.io/dashboard?id=69338b20-fd5f-439d-bf2c-2b1473ca5712)
 
-Node js module to create multi integration code that will run on kubernets, google cloud functions or aws lambda. For local environment it works with express too.
+Node.js module to create multi integration code that will run on some providers, for local or remote environments.
+
+## Providers
+
+[x] Express.js
+[ ] fastify - Doing
+[ ] Google Cloud Run - Wait List
+[ ] Aws Lambda - Wait List
+
+## How it Works?
 
 This lib basic enable the creation of routes that will be interpreted on the entry point of each technology.
 
@@ -54,7 +63,7 @@ All `exec` functions should be async.
 
 When you define the routes, the paths will be interpreted in the order of declaration and it will execute the function associated to the exec property.
 
-Have a look to the [multi-integration-test](https://github.com/brunopenso/multi-integration-library-test) on how to implement a multi technology integration that will enable you to port your code from kubernets to aws lambda or google cloud functions
+Have a look to the [multi-integration-library-test](https://github.com/brunopenso/multi-integration-library-test) on how to implement a multi technology integration that will enable you to port your code from local, to any providers without changing any code.
 
 ## Local testing
 
@@ -85,3 +94,4 @@ In March 2021, I came across to this [text](https://www.infoq.com/articles/serve
 2. Commit and wait the CI to finish
 3. Create a release on github interface
 4. Wait for the CD to finish
+5. Check npmjs.com for the package
