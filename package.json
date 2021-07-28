@@ -1,6 +1,6 @@
 {
   "name": "multi-integration-library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node js module to create multi integration to run on kubernets, google cloud functions, aws lambda and express for local testing",
   "main": "src/runtime.js",
   "public": true,

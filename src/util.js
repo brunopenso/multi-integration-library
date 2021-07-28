@@ -24,12 +24,12 @@ function parsePath (url) {
 }
 
 /*
- * Express|Kubernetes with Express: method;orginalUrl;query;headers;body
+ * Regardless the runtinme this method get url, body, query strings and header and normalize it to a object
  * AWS Lambda: TBD
  * Google Cloud Functions: TBD
  */
 function parseHttpRequest (runtime, request) {
-  const providers = 'express;awslambda;gcpfunction'
+  const providers = 'express;fastify'
   if (providers.indexOf(runtime) === -1) {
     throw new Error(`Only the follow providers are available ${providers}`)
   }
