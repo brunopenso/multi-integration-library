@@ -10,8 +10,8 @@ Node.js module to create multi integration code that will run on some providers,
 ## Providers
 
 - [x] Express.js
-- [ ] fastify - Doing
-- [ ] Google Cloud Run - Wait List
+- [x] fastify - Doing
+- [x] Google Cloud Run - Done
 - [ ] Aws Lambda - Wait List
 
 ## How it Works?

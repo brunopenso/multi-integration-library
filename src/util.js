@@ -29,7 +29,7 @@ function parsePath (url) {
  * Google Cloud Functions: TBD
  */
 function parseHttpRequest (runtime, request) {
-  const providers = 'express;fastify'
+  const providers = 'express;fastify;googlecloudfunction'
   if (providers.indexOf(runtime) === -1) {
     throw new Error(`Only the follow providers are available ${providers}`)
   }
