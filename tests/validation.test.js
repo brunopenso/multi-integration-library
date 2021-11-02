@@ -78,7 +78,7 @@ describe('validate object attribute pattern definition', () => {
 })
 
 describe('validate object attribute method definition', () => {
-  const errorMessage = 'The only methods supported are GET,POST,PUT,DELETE'
+  const errorMessage = 'The only methods supported are GET,POST,PUT,DELETE,PATCH'
   test('method as number', async () => {
     await expect(async () => {
       validateRoute([{ pattern: '/path', method: 2, exec: 3 }])

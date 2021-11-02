@@ -150,7 +150,7 @@ function validatePattern (pattern) {
  * Validate http method
  */
 function validateMethod (method) {
-  const methods = 'GET,POST,PUT,DELETE'
+  const methods = 'GET,POST,PUT,DELETE,PATCH'
   if (methods.indexOf(method) === -1 || (typeof method !== 'string')) {
     throw new Error(`The only methods supported are ${methods}`)
   }
