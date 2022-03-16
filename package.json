@@ -28,7 +28,7 @@
     "husky": "^7.0.4",
     "jest": "^27.4.4",
     "node-mocks-http": "^1.10.1",
-    "pinst": "^2.1.6",
+    "pinst": "^3.0.0",
     "standard": "^16.0.3"
   },
   "dependencies": {},
