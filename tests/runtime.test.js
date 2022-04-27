@@ -277,3 +277,16 @@ test('method not implemented', async function () {
   expect(res.status).toHaveBeenCalledWith(500)
   expect(res.send).toHaveBeenCalledWith({ message: 'integration error', error: 'Error not handled in implementation. Message: not implemented' })
 })
+
+test('method not implemented', async function () {
+  const req = mockRequestQueryString('/a/?test=123', 'GET', undefined, { test: '123' })
+  const res = mockResponse()
+  await runtime([{
+    pattern: '/a',
+    method: 'GET',
+    exec: (params) => { throw new Error('not implemented') }
+  }], req, res)
+
+  expect(res.status).toHaveBeenCalledWith(500)
+  expect(res.send).toHaveBeenCalledWith({ message: 'integration error', error: 'Only the follow providers are available express;fastify;googlecloudfunction' })
+})
