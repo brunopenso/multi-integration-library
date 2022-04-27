@@ -46,5 +46,8 @@
       "expect",
       "jest"
     ]
+  },
+  "dependencies": {
+    "winston": "^3.7.2"
   }
 }

@@ -1,4 +1,7 @@
 const util = require('./util')
+const logLocal = require('./log')
+
+let logger = logLocal
 
 /*
  * Entry point for this library
@@ -7,14 +10,18 @@ const util = require('./util')
  * @param {HttpResponse} response
  * @param {String} provider - The type of tecnology running this code. Default: express
  */
-async function runtime (routes, request, response, provider = 'express') {
+async function runtime (routes, request, response, provider, logMethod = undefined) {
   try {
+    if (logMethod !== undefined) {
+      logger = logMethod
+    }
     if (!routes || routes.length === 0) {
+      logger.error('Routes object is empty')
       throw new Error('Routes object is empty')
     }
     await routeTo(routes, request, response, provider)
   } catch (err) {
-    console.log(JSON.stringify(err))
+    logger.error(`General Error, function runtime > ${JSON.stringify(err)}`)
     response.status(500).send({ message: 'integration error', error: err.message })
   }
 }
