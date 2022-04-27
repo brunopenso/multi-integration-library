@@ -14,6 +14,7 @@ async function runtime (routes, request, response, provider = 'express') {
     }
     await routeTo(routes, request, response, provider)
   } catch (err) {
+    console.log(JSON.stringify(err))
     response.status(500).send({ message: 'integration error', error: err.message })
   }
 }
