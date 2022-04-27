@@ -21,7 +21,7 @@ async function runtime (routes, request, response, provider, logMethod = undefin
     }
     await routeTo(routes, request, response, provider)
   } catch (err) {
-    logger.error(`General Error, function runtime > ${JSON.stringify(err)}`)
+    logger.error(`General Error, function runtime > ${err.message}`)
     response.status(500).send({ message: 'integration error', error: err.message })
   }
 }

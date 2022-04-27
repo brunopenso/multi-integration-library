@@ -2,7 +2,7 @@ const winston = require('winston')
 
 const level = process.env.LOG_LEVEL || 'info'
 
-console.log(`Starting winston with ${level}`)
+console.log(`Starting multi-integration-library winston with ${level}. You can override this using your logger. Please see documentation for details`)
 
 const logger = winston.createLogger({
   level,
